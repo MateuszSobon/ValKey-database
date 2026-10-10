@@ -15,4 +15,14 @@ def allow_fixed_window(client_id: str) -> bool:
     pipe.expire(key, WINDOW, nx=True)
     count, _ = pipe.execute()
 
-    return count <= LIMIT
+    return count <= LIMIT 
+
+if __name__ == "__main__":
+    r.delete("rate:fixed:test")
+    allowed = 0
+
+    for i in range(1, 106):
+        if allow_fixed_window("test"):
+            allowed += 1
+    print("Przepuszczone:", allowed)      
+    print("TTL klucza:", r.ttl("rate:fixed:test"))
