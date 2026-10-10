@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mateu\\source\\repos\\ValKey1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FFE92CFB-3D04-4FC3-9D3F-5D4A94B2458E}|ValKey1\\ValKey1.pyproj|C:\\Users\\mateu\\source\\repos\\ValKey1\\ValKey1\\ValKey1.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{FFE92CFB-3D04-4FC3-9D3F-5D4A94B2458E}|ValKey1\\ValKey1.pyproj|solutionrelative:ValKey1\\ValKey1.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ValKey1.py",
+              "DocumentMoniker": "C:\\Users\\mateu\\source\\repos\\ValKey1\\ValKey1\\ValKey1.py",
+              "RelativeDocumentMoniker": "ValKey1\\ValKey1.py",
+              "ToolTip": "C:\\Users\\mateu\\source\\repos\\ValKey1\\ValKey1\\ValKey1.py",
+              "RelativeToolTip": "ValKey1\\ValKey1.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-10-10T14:56:26.405Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

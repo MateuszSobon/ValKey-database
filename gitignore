@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Środowiska wirtualne
+venv/
+.venv/
+env/
+ENV/
+
+# Zmienne środowiskowe i sekrety
+.env
+*.env
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.pyproj.user
+bin/
+obj/
+
+# VS Code
+.vscode/
+
+# Valkey / Redis (pliki danych i logi z lokalnych uruchomień)
+dump.rdb
+appendonly.aof
+appendonlydir/
+nodes*.conf
+*.log
+
+# Wyniki eksperymentów (generowane; usuń te linie, jeśli chcesz je commitować)
+results/
+*.csv
+
+# System
+.DS_Store
+Thumbs.db
+desktop.ini
