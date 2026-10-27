@@ -6,6 +6,7 @@ from pydoc import cli
 from sre_constants import CATEGORY_LINEBREAK
 import uuid
 import valkey 
+import time
 
 r = valkey.Valkey(host="127.0.0.1", port="6379", decode_responses=True)
 
@@ -66,8 +67,20 @@ def run_tests(allow_fn, name, total=1000, workers=50):
     print(f"{name:10} | zadan: {total} | przepuszczone: {allowed} "
         f"| limit: {LIMIT} | bledne decyzje: {allowed - LIMIT}")
 
+def boundary_demo(window=2, limit=100):
+    for name, fn in (("sta³e", allow_fixed_window), ("przesuwne", allow_sliding)):
+        client = "boundary"
+        r.delete(f"rate:fixed:{client}", f"rate:sliding:{client}")
+        first = fn(client, limit, window)                       
+        time.sleep(window * 0.9)
+        a = sum(fn(client, limit, window) for _ in range(limit - 1))
+        time.sleep(window * 0.2)                                
+        b = sum(fn(client, limit, window) for _ in range(limit))
+        print(f"{name:10} | przepuszczone ³¹cznie: {int(first) + a + b} "
+              f"w ok. {window * 1.1:.1f} s (limit {limit} na {window} s)")
 
 if __name__ == "__main__":
     run_tests(allow_naive, "naiwna")
     run_tests(allow_fixed_window, "atomowa")
     run_tests(allow_sliding, "przesuwne")
+    boundary_demo()

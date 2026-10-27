@@ -6,8 +6,8 @@ Projekt: rozproszony rate limiter (np. 100 żądań na 60 sekund na klienta) opa
 
 - [x] Pojedyncza instancja Valkey (WSL Ubuntu)
 - [x] Fixed window (`INCR` + `EXPIRE` w transakcji)
-- [ ] Wersja naiwna (`GET` / `+1` / `SET`) i test współbieżny
-- [ ] Sliding window (sorted set + skrypt Lua)
+- [x] Wersja naiwna (`GET` / `+1` / `SET`) i test współbieżny
+- [x] Sliding window (sorted set + skrypt Lua)
 - [ ] Wiele instancji aplikacji (min. 3)
 - [ ] Klaster Valkey z replikami
 - [ ] Eksperymenty z awariami i pomiary
