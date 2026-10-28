@@ -32,15 +32,13 @@ return 0
 
 sliding_script = r.register_script(SLIDING_LUA)
 
-def allow_fixed_window(client_id: str) -> bool:
+def allow_fixed_window(client_id, limit=LIMIT, window=WINDOW) -> bool:
     key = f"rate:fixed:{client_id}"
-
     pipe = r.pipeline(transaction=True)
     pipe.incr(key)
-    pipe.expire(key, WINDOW, nx=True)
+    pipe.expire(key, window, nx=True)
     count, _ = pipe.execute()
-
-    return count <= LIMIT 
+    return count <= limit
 
 def allow_naive(client_id) -> bool:
     key = f"rate:fixed:{client_id}"
@@ -68,7 +66,7 @@ def run_tests(allow_fn, name, total=1000, workers=50):
         f"| limit: {LIMIT} | bledne decyzje: {allowed - LIMIT}")
 
 def boundary_demo(window=2, limit=100):
-    for name, fn in (("sta³e", allow_fixed_window), ("przesuwne", allow_sliding)):
+    for name, fn in (("stale", allow_fixed_window), ("przesuwne", allow_sliding)):
         client = "boundary"
         r.delete(f"rate:fixed:{client}", f"rate:sliding:{client}")
         first = fn(client, limit, window)                       
@@ -76,7 +74,7 @@ def boundary_demo(window=2, limit=100):
         a = sum(fn(client, limit, window) for _ in range(limit - 1))
         time.sleep(window * 0.2)                                
         b = sum(fn(client, limit, window) for _ in range(limit))
-        print(f"{name:10} | przepuszczone ³¹cznie: {int(first) + a + b} "
+        print(f"{name:10} | przepuszczone lacznie: {int(first) + a + b} "
               f"w ok. {window * 1.1:.1f} s (limit {limit} na {window} s)")
 
 if __name__ == "__main__":
